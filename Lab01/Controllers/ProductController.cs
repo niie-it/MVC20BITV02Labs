@@ -16,5 +16,19 @@ namespace Lab01.Controllers
             // gửi mảng sản phẩm qua View để hiển thị
             return View(products);
         }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(Product pro)
+        {
+            //thêm vào mảng
+            products.Add(pro);
+            //chuyển trang list hiển thị danh sách
+            return View("Index", products);
+        }
     }
 }
