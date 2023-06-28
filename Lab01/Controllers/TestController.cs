@@ -1,10 +1,41 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Lab01.Models;
+using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
 using System.Net;
 
 namespace Lab01.Controllers
 {
     public class TestController : Controller
     {
+        public async Task<IActionResult> AsyncTest()
+        {
+            var sw = new Stopwatch();
+            sw.Start();
+
+            var tm = new TestModel();
+            var a = tm.AAsync();
+            var b = tm.BAsync();
+            var c = tm.CAsync();
+            await a; await b; await c;
+
+            sw.Stop();
+            return Content($"Chạy hết {sw.ElapsedMilliseconds} ms");
+        }
+
+        public IActionResult SyncTest()
+        {
+            var sw = new Stopwatch();
+            sw.Start();
+
+            var tm = new TestModel();
+            tm.A();
+            tm.B();
+            tm.C();
+
+            sw.Stop();
+            return Content($"Chạy hết {sw.Elapsed}s");
+        }
+
         public IActionResult Index()
         {
             return View();
