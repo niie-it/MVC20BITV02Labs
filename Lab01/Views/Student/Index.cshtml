@@ -1,0 +1,47 @@
+﻿@model Lab01.Models.Student
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h3>Student</h3>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Manage">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="StudentId" class="control-label"></label>
+                <input asp-for="StudentId" class="form-control" />
+                <span asp-validation-for="StudentId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FullName" class="control-label"></label>
+                <input asp-for="FullName" class="form-control" />
+                <span asp-validation-for="FullName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mark" class="control-label"></label>
+                <input asp-for="Mark" class="form-control" />
+                <span asp-validation-for="Mark" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Grade" class="control-label"></label>
+                <input readonly asp-for="Grade" class="form-control" />
+                <span asp-validation-for="Grade" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" name="Save" value="Save to Text file" class="btn btn-primary" />
+                <input type="submit" name="Save" value="Save to JSON file" class="btn btn-primary" />
+
+                <a asp-action="ReadData" asp-route-filetype="JSON" class="btn btn-success">JSON</a>
+                <a asp-action="ReadData" asp-route-filetype="TEXT" class="btn btn-success">TEXT</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
