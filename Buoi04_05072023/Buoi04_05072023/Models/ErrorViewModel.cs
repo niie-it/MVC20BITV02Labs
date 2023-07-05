@@ -1,4 +1,4 @@
-namespace Lab01.Models
+namespace Buoi04_05072023.Models
 {
     public class ErrorViewModel
     {

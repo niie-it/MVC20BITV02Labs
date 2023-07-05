@@ -1,8 +1,8 @@
-﻿using Lab01.Models;
+﻿using Buoi04_05072023.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
-namespace Lab01.Controllers
+namespace Buoi04_05072023.Controllers
 {
     public class HomeController : Controller
     {
