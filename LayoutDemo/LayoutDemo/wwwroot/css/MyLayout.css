@@ -1,0 +1,6 @@
+﻿.mymenu a{
+    text-decoration: none;
+}
+.mymenu a:hover {
+    text-shadow: 0 0 7px red;
+}

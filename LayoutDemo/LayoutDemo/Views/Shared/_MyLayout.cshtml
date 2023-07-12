@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<title>@ViewBag.Title</title>
+	<!--CSS-->
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+	<link href="~/css/mylayout.css" rel="stylesheet" />
+	@RenderSection("MyStyle", required: false)
+</head>
+<body>
+	<div class="container">
+		<header class="p-1" style="height:100px; background-color:yellow;">#MyHEADER</header>
+		<div class="row">
+			<aside class="col-3 bg-light" style="min-height:400px;">
+				MENU trái
+
+				<!--Chèn menu Danh mục (tĩnh)-->
+				@await Html.PartialAsync("DanhMuc")
+
+			</aside>
+			<div class="col-9">
+				@RenderBody()
+			</div>
+		</div>
+		<footer class="text-center p-2" style="background-color:lightcyan;">
+			&copy; Bản quyền thuộc về
+		</footer>
+	</div>
+	<!--JS-->
+	<script src="~/lib/jquery/dist/jquery.js"></script>
+	<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+	@RenderSection("MyScript", required: false)
+</body>
+</html>

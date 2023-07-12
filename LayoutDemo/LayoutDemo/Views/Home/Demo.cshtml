@@ -1,0 +1,11 @@
+﻿
+@{
+    ViewData["Title"] = "Demo";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+}
+
+<h1>Demo</h1>
+
+<h2>Demo sử dụng Layout</h2>
+<!--Chèn menu Danh mục (tĩnh)-->
+@await Html.PartialAsync("DanhMuc")
