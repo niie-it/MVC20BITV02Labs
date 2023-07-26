@@ -1,0 +1,12 @@
+﻿@model IEnumerable<CategoryModel>
+
+<ul class="list-group mymenu">
+	@foreach (var item in Model)
+	{
+		<li class="list-group-item">
+			<a href="?id=@item.Id">
+				@item.Name
+			</a>
+		</li>
+	}
+</ul>
