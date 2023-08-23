@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Demo AJAX</h1>
+<div>
+    TIME: <span id="dongho" class="text-danger"></span>
+</div>
+
+@section Scripts{
+    <script>
+        // định nghĩa hàm lấy dữ liệu từ server
+        function layGioServer(){
+            $.ajax({
+                url: "/Ajax/ServerTime",
+                //data: {},
+                success: function(response){
+                    $("#dongho").html(response);
+                }
+            });
+        }
+
+        //gọi lần đầu
+        layGioServer();
+
+        //cứ 1s = 1000ms gọi 1 lần
+        setInterval(layGioServer, 1000);
+    </script>
+}
