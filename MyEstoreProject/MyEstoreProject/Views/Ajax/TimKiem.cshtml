@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewData["Title"] = "TimKiem";
+}
+
+<h1>Tìm kiếm</h1>
+<fieldset>
+    Tên hàng hóa: <input id="keyword" placeholder="Tìm gì?" />
+    <br />
+    Giá từ: <input type="number" id="giaTu" />
+    Giá đến: <input type="number" id="giaDen" />
+    <br />
+    <button type="button" id="btnTim">Tìm</button>
+</fieldset>
+<div id="result"></div>
+@section Scripts{
+    <script>
+        $(function () {
+            //gắn sự kiện keyup cho textfield
+            $("#btnTim").click(function () {
+                $.ajax({
+                    url: "/Ajax/TimKiem",
+                    type: "POST",
+                    data: {
+                        name: $("#keyword").val(),
+                        fromPrice: $("#giaTu").val(),
+                        toPrice: $("#giaDen").val(),
+                    },
+                    success: function (res) {
+                        $("#result").html(res);
+                    },
+                    error: function (xhr, textStatus, error) {
+                        alert(xhr.statusText);
+                    }
+                });
+            });
+        });
+    </script>
+}
