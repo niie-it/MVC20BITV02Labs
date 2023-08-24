@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MyEstoreProject.Data;
+using MyEstoreProject.Models;
 
 namespace MyEstoreProject.Controllers
 {
@@ -29,5 +30,27 @@ namespace MyEstoreProject.Controllers
                 });
             return Json(data);
         }
+
+        public ActionResult Report()
+        {
+            var items = _ctx.ChiTietHds
+                .GroupBy(cthd => new
+                {
+                    cthd.MaHhNavigation.MaLoaiNavigation.TenLoai,
+                    cthd.MaHhNavigation.MaNccNavigation.TenCongTy
+                })
+                .Select(g => new Report
+                {
+                    Category = g.Key.TenLoai,
+                    Supplier = g.Key.TenCongTy,
+                    Total = g.Sum(p => p.SoLuong * p.DonGia),
+                    ItemCount = g.Sum(p => p.SoLuong),
+                    MinPrice = g.Min(p => p.DonGia),
+                    MaxPrice = g.Max(p => p.DonGia),
+                    Average = g.Average(p => p.DonGia),
+                });
+            return View(items);
+        }
+
     }
 }

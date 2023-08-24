@@ -1,7 +1,7 @@
 ﻿namespace MyEstoreProject.Models
 {
     public class KetQuaTimKiemVM
-    {
+    { 
         public int MaHh { get; set; }
         public string TenHh { get; set; }
         public double DonGia { get; set; }

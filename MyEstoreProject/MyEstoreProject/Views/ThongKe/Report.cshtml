@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Report>
+@{
+	ViewBag.Title = "Thống Kê Hàng Hóa";
+}
+
+<table class="table table-bordered">
+	<tr>
+		<th>Nhà CC</th>
+		<th>Loại</th>
+		<th>Tổng Giá Trị</th>
+		<th>Tổng SL</th>
+		<th>Giá Trị TB</th>
+		<th>Giá Nhỏ Nhất</th>
+		<th>Giá Lớn Nhất</th>
+	</tr>
+	@foreach (var p in Model)
+	{
+		<tr>
+			<td>@p.Supplier</td>
+			<td>@p.Category</td>
+			<td>@string.Format("{0:c}", p.Total)</td>
+			<td>@p.ItemCount</td>
+			<td>@string.Format("{0:c}", p.Average)</td>
+			<td>@string.Format("{0:c}", p.MinPrice)</td>
+			<td>@string.Format("{0:c}", p.MaxPrice)</td>
+		</tr>
+	}
+</table>
+
+
